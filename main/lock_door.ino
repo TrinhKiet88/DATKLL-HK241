@@ -131,18 +131,7 @@ void checkPass(){ // kiem tra password
             clear_data_input();
             index_t = 3;//truong hop dung pass
         }
-        // else if (compareData(data_input, mode_changePass)){
-        //     // Serial.print("mode_changePass");
-        //     lcd.clear();
-        //     clear_data_input();
-        //     index_t = 1;
-        // }
-        // else if (compareData(data_input, mode_resetPass)){
-        //     // Serial.print("mode_resetPass");
-        //     lcd.clear();
-        //     clear_data_input();
-        //     index_t = 2;
-        // }
+
         else if(compareData(data_input, mode_hardReset)){
             lcd.setCursor(0, 0);
             lcd.print("---HardReset---");
@@ -153,21 +142,6 @@ void checkPass(){ // kiem tra password
             lcd.clear();
             index_t = 0;
         }
-        // else if (compareData(data_input, mode_addRFID)){
-        //     lcd.clear();
-        //     clear_data_input();
-        //     index_t = 8;
-        // }
-        // else if (compareData(data_input, mode_delRFID)){
-        //     lcd.clear();
-        //     clear_data_input();
-        //     index_t = 9;
-        // }
-        // else if (compareData(data_input, mode_delAllRFID)){
-        //     lcd.clear();
-        //     clear_data_input();
-        //     index_t = 10;
-        // }
         
         else{ //xu li loi
             if (time_error == 2){
@@ -219,20 +193,8 @@ void errored3Times(){
     lcd.print("Wait 1 minutes");
     delay(1000);
     lcd.clear();
-    // unsigned char minutes = 1;
     unsigned char seconds = 59;
-    // unsigned char i = 30;
-    // while(i > 0){
-    //     if(i == 1 && minute > 0){
-    //         minute--;
-    //         i = 59;
-    //     }
-    //     if(i == 1 && minute == 0){
-    //         break;
-    //     }
-    //     i--;
-    //     delay(1000);
-    // }
+
 //dem thoi gian cho
     while(seconds > 0){
     // Hien thoi gian con lai
@@ -268,22 +230,6 @@ void errored5Times(){
         // digitalWrite(BUZZER, LOW);
         lcd.setCursor(0, 4);
         lcd.print("LOCKED");
-        // getData();
-        // if(isDataBuffer(data_input)){
-        //     if(compareData(data_input, mode_hardReset)){
-        //         lcd.setCursor(0, 0);
-        //         lcd.print("-- HardReset --");
-        //         writeEpprom(pass_default);
-        //         insertData(password, pass_default);
-        //         clear_data_input();
-        //         digitalWrite(BUZZER, HIGH);
-        //         delay(2000);
-        //         digitalWrite(BUZZER, LOW);
-        //         lcd.clear();
-        //         index_t = 0;
-        //         break;
-        //     }
-        // }
         if(rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()){
         byte rfidTag[4];
         Serial.print("RFID TAG: ");

@@ -3,20 +3,6 @@
 #define BLYNK_TEMPLATE_NAME "Gas detector"
 #define BLYNK_AUTH_TOKEN "6jPXx5C9nGfTjljoRc_pFUTT1gfjXGrS"
 
-//define sever
-#define SMTP_server "smtp111222.gmail.com"
-#define SMTP_Port 465
-
-//define email
-#define sender_email "blynktest1111@gmail.com"
-#define sender_password "kiettuan882004"
-
-//define receive email
-#define Recipient_email "trinhtuankiet0808@gmail.com"
-#define Recipient_name  "Kiet Trinh"
-
-
-
 //gas sensor
 #define gas_sensor 34//A0
 
@@ -232,26 +218,13 @@ void setup()
      session.login.email = sender_email;
      session.login.password = sender_password;
      session.login.user_domain ="";
-  //Declare the message class
-     SMTP_Message message;
-     message.sender.name = "ESP 32";
-     message.sender.email = sender_email;
-     message.subject = "ESP32 Warning";
-     message.addRecipient(Recipient_name,Recipient_email);
-
-    String htmlMsg = "<div style=\"color:#000000;\"><h1>Hello Semicon!</h1><p>Mail Generated from ESP32</p></div>";
-
-    message.html.content = htmlMsg.c_str();
-    message.html.content = htmlMsg.c_str();
-    message.text.charSet = "us-ascii";
-    message.html.transfer_encoding = Content_Transfer_Encoding::enc_7bit;
  }
   static unsigned long lastSensorRead1 = 0;
   static unsigned long lastSensorRead = 0;
   
 void loop()
 {
-    //Blynk.run();
+    Blynk.run();
     lcd.setCursor(1, 0);
     lcd.print("Enter Password");
     checkPass();
